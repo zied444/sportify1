@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.control.Button?>
+
+<AnchorPane prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #232946;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.DetaileventController">
+   <children>
+      <!-- Image de fond sportive -->
+      <ImageView fitHeight="600.0" fitWidth="800.0" layoutX="0.0" layoutY="0.0" opacity="0.18" preserveRatio="false">
+         <image>
+            <Image url="@images/sport-bg.jpg" />
+         </image>
+      </ImageView>
+
+      <!-- Overlay gris foncé semi-transparent -->
+      <Rectangle arcHeight="0.0" arcWidth="0.0" fill="#484e5b" height="600.0" opacity="0.85" width="800.0" />
+
+      <!-- Conteneur principal -->
+      <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#f4f4f6" height="500.0" layoutX="50.0" layoutY="50.0" opacity="0.97" width="700.0">
+         <effect>
+            <DropShadow color="#b0c4de" radius="20.0" />
+         </effect>
+      </Rectangle>
+
+      <!-- Titre -->
+      <Label fx:id="titleLabel" layoutX="230.0" layoutY="80.0" text="Détails de l'Événement" textAlignment="CENTER" textFill="#ff8906">
+         <font>
+            <Font name="System Bold" size="38.0" />
+         </font>
+         <effect>
+            <DropShadow color="#232946" radius="2.0" />
+         </effect>
+      </Label>
+
+      <!-- Image de l'événement -->
+      <ImageView fx:id="eventImageView" fitHeight="200.0" fitWidth="300.0" layoutX="250.0" layoutY="150.0" preserveRatio="true">
+         <effect>
+            <DropShadow color="#232946" radius="10.0" />
+         </effect>
+      </ImageView>
+
+      <!-- Informations de l'événement -->
+      <Label layoutX="150.0" layoutY="380.0" style="-fx-font-size: 15px; -fx-font-weight: bold;" text="Nom:" textFill="#232946" />
+      <Label fx:id="nomLabel" layoutX="250.0" layoutY="380.0" style="-fx-font-size: 15px;" textFill="#232946" />
+
+      <Label layoutX="150.0" layoutY="420.0" style="-fx-font-size: 15px; -fx-font-weight: bold;" text="Date:" textFill="#232946" />
+      <Label fx:id="dateLabel" layoutX="250.0" layoutY="420.0" style="-fx-font-size: 15px;" textFill="#232946" />
+
+      <Label layoutX="150.0" layoutY="460.0" style="-fx-font-size: 15px; -fx-font-weight: bold;" text="Lieu:" textFill="#232946" />
+      <Label fx:id="lieuLabel" layoutX="250.0" layoutY="460.0" style="-fx-font-size: 15px;" textFill="#232946" />
+
+      <Label layoutX="150.0" layoutY="500.0" style="-fx-font-size: 15px; -fx-font-weight: bold;" text="Type:" textFill="#232946" />
+      <Label fx:id="typeLabel" layoutX="250.0" layoutY="500.0" style="-fx-font-size: 15px;" textFill="#232946" />
+
+      <Label layoutX="150.0" layoutY="540.0" style="-fx-font-size: 15px; -fx-font-weight: bold;" text="Places disponibles:" textFill="#232946" />
+      <Label fx:id="placesLabel" layoutX="300.0" layoutY="540.0" style="-fx-font-size: 15px;" textFill="#232946" />
+
+      <!-- Bouton Fermer -->
+      <Button layoutX="350.0" layoutY="550.0" mnemonicParsing="false" onAction="#handleClose" prefWidth="100.0" style="-fx-background-color: #ff8906; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 5; -fx-padding: 8 15;" text="Fermer">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>
