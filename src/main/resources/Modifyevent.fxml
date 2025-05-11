@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="700.0" prefWidth="900.0" style="-fx-background-color: #232946;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.ModifyeventController">
+   <children>
+      <!-- Image de fond sportive -->
+      <ImageView fitHeight="700.0" fitWidth="900.0" layoutX="0.0" layoutY="0.0" opacity="0.18" preserveRatio="false">
+         <image>
+            <Image url="@images/sport-bg.jpg" />
+         </image>
+      </ImageView>
+
+      <!-- Overlay gris foncé semi-transparent -->
+      <Rectangle arcHeight="0.0" arcWidth="0.0" fill="#484e5b" height="700.0" opacity="0.85" width="900.0" />
+
+      <!-- Conteneur du formulaire sans cadre -->
+      <Rectangle arcHeight="30.0" arcWidth="30.0" fill="#f4f4f6" height="600.0" layoutX="50.0" layoutY="50.0" opacity="0.97" width="800.0">
+         <effect>
+            <DropShadow color="#b0c4de" radius="20.0" />
+         </effect>
+      </Rectangle>
+
+      <!-- Titre -->
+      <Label layoutX="230.0" layoutY="80.0" text="Modifier Evenement" textAlignment="CENTER" textFill="#ff8906">
+         <font>
+            <Font name="System Bold" size="38.0" />
+         </font>
+         <effect>
+            <DropShadow color="#232946" radius="2.0" />
+         </effect>
+      </Label>
+
+      <!-- Formulaire -->
+      <Label layoutX="171.0" layoutY="170.0" style="-fx-font-size: 15px; -fx-font-weight: bold;" text="Nom de l'évenement:" textFill="#232946" />
+      <TextField fx:id="txtnom" layoutX="395.0" layoutY="170.0" prefWidth="300.0" style="-fx-background-radius: 8; -fx-border-radius: 8; -fx-border-color: #00509d; -fx-padding: 8; -fx-background-color: #f4f4f6; -fx-font-size: 14px;" />
+
+      <Label layoutX="171.0" layoutY="220.0" style="-fx-font-size: 15px; -fx-font-weight: bold;" text="Lieu:" textFill="#232946" />
+      <TextField fx:id="txtlieu" layoutX="395.0" layoutY="220.0" prefWidth="300.0" style="-fx-background-radius: 8; -fx-border-radius: 8; -fx-border-color: #00509d; -fx-padding: 8; -fx-background-color: #f4f4f6; -fx-font-size: 14px;" />
+
+      <Label layoutX="171.0" layoutY="270.0" style="-fx-font-size: 15px; -fx-font-weight: bold;" text="Date:" textFill="#232946" />
+      <DatePicker fx:id="txtdate" layoutX="395.0" layoutY="270.0" prefWidth="300.0" style="-fx-background-radius: 8; -fx-border-radius: 8; -fx-background-color: #f4f4f6; -fx-font-size: 14px;" />
+
+      <Label layoutX="171.0" layoutY="320.0" style="-fx-font-size: 15px; -fx-font-weight: bold;" text="Description:" textFill="#232946" />
+      <TextField fx:id="txtdescription" layoutX="395.0" layoutY="320.0" prefHeight="60.0" prefWidth="300.0" style="-fx-background-radius: 8; -fx-border-radius: 8; -fx-border-color: #00509d; -fx-padding: 8; -fx-background-color: #f4f4f6; -fx-font-size: 14px;" />
+
+      <Label layoutX="171.0" layoutY="400.0" style="-fx-font-size: 15px; -fx-font-weight: bold;" text="Type de l'évenement:" textFill="#232946" />
+      <ComboBox fx:id="txttype" layoutX="395.0" layoutY="400.0" prefWidth="300.0" style="-fx-background-radius: 8; -fx-border-radius: 8; -fx-background-color: #f4f4f6; -fx-font-size: 14px;" />
+
+      <Label layoutX="171.0" layoutY="450.0" style="-fx-font-size: 15px; -fx-font-weight: bold;" text="Nombre de places disponibles:" textFill="#232946" />
+      <TextField fx:id="txtnbplaces" layoutX="395.0" layoutY="450.0" prefWidth="300.0" style="-fx-background-radius: 8; -fx-border-radius: 8; -fx-border-color: #00509d; -fx-padding: 8; -fx-background-color: #f4f4f6; -fx-font-size: 14px;" />
+
+      <!-- Bouton Modifier -->
+      <Button layoutX="395.0" layoutY="530.0" mnemonicParsing="false" onAction="#Modifier" prefWidth="300.0" style="-fx-background-color: linear-gradient(to right, #43ea4a, #1e7d22); -fx-text-fill: white; -fx-font-size: 18px; -fx-font-weight: bold; -fx-background-radius: 8; -fx-cursor: hand; -fx-effect: dropshadow(gaussian, #232946, 10, 0, 0, 5);" text="Modifier">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>
