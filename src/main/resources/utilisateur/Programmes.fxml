@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<BorderPane xmlns="http://javafx.com/javafx/8"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="controllers.utilisateur.ProgramsController"
+            prefHeight="600.0" prefWidth="1000.0"
+            stylesheets="@../styles/style.css">
+
+    <top>
+        <HBox style="-fx-background-color: #08080b;" spacing="20" alignment="CENTER_LEFT">
+            <padding>
+                <Insets top="15" right="30" bottom="15" left="30"/>
+            </padding>
+
+            <!-- Logo -->
+            <ImageView fitHeight="50" fitWidth="50" preserveRatio="true">
+                <Image url="/imgs/logo.png"/>
+            </ImageView>
+
+            <!-- Navigation Buttons -->
+            <HBox spacing="30" alignment="CENTER_RIGHT" HBox.hgrow="ALWAYS">
+                <Button text="Événements" styleClass="nav-button"/>
+                <Button text="Produits" styleClass="nav-button"/>
+                <Button text="Services" styleClass="nav-button"/>
+                <Button text="Entraînement" styleClass="nav-button"/>
+                <Button text="Avis" styleClass="nav-button"/>
+                <Button text="À propos" styleClass="nav-button"/>
+            </HBox>
+        </HBox>
+    </top>
+
+    <center>
+        <StackPane>
+
+            <VBox alignment="CENTER" spacing="20" maxWidth="1000">
+                <padding>
+                    <Insets top="50" right="50" bottom="50" left="50"/>
+                </padding>
+
+                <Label text="📋 Programmes Disponibles" styleClass="title-label"/>
+
+                <TableView fx:id="programTable" styleClass="modern-table" prefHeight="450" prefWidth="920">
+                    <columns>
+                        <TableColumn fx:id="colProgramme" text="Programme" prefWidth="220"/>
+                        <TableColumn fx:id="colDescription" text="Description" prefWidth="360"/>
+                        <TableColumn fx:id="colNiveau" text="Niveau" prefWidth="180"/>
+                    </columns>
+                </TableView>
+            </VBox>
+
+
+            <Button fx:id="backButton" text="Retour"
+                    onAction="#handleBack"
+                    styleClass="back-button"
+                    StackPane.alignment="TOP_LEFT">
+                <StackPane.margin>
+                    <Insets top="20" left="20"/>
+                </StackPane.margin>
+            </Button>
+        </StackPane>
+    </center>
+
+</BorderPane>

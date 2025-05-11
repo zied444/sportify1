@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="controllers.utilisateur.LoginController"
+            stylesheets="/styles/style.css">
+
+  <top>
+    <HBox style="-fx-background-color: #08080b;" spacing="20" alignment="CENTER_LEFT">
+      <padding>
+        <Insets top="15" right="30" bottom="15" left="30"/>
+      </padding>
+
+      <!-- Logo -->
+      <ImageView fitHeight="50" fitWidth="50" preserveRatio="true">
+        <Image url="/imgs/logo.png"/>
+      </ImageView>
+
+      <!-- Navigation Buttons -->
+      <HBox spacing="30" alignment="CENTER_RIGHT" HBox.hgrow="ALWAYS">
+        <Button text="Événements" styleClass="nav-button"/>
+        <Button text="Produits" styleClass="nav-button"/>
+        <Button text="Services" styleClass="nav-button"/>
+        <Button text="Entraînement" styleClass="nav-button"/>
+        <Button text="Avis" styleClass="nav-button"/>
+        <Button text="À propos" styleClass="nav-button"/>
+      </HBox>
+    </HBox>
+  </top>
+
+  <center>
+    <VBox alignment="CENTER" spacing="20" AnchorPane.topAnchor="50.0" AnchorPane.leftAnchor="50.0"
+          AnchorPane.rightAnchor="50.0" AnchorPane.bottomAnchor="50.0">
+      <ImageView>
+        <image>
+          <Image url="@../imgs/logo.png" />
+        </image>
+      </ImageView>
+      <Label text="Bienvenue sur Sportify" styleClass="title-label"/>
+      <Label text="Connectez-vous pour accéder à votre espace" styleClass="subtitle-label"/>
+      <VBox spacing="15" alignment="CENTER" styleClass="card" prefWidth="400">
+        <TextField fx:id="emailField" promptText="Email" styleClass="text-field" prefWidth="300"/>
+        <PasswordField fx:id="passwordField" promptText="Mot de passe" styleClass="password-field" prefWidth="300"/>
+        <Button fx:id="loginButton" text="Se connecter" styleClass="primary-button" prefWidth="300"/>
+        <Button fx:id="registerButton" text="S'inscrire" styleClass="primary-button" prefWidth="300"/>
+      </VBox>
+    </VBox>
+  </center>
+</BorderPane>

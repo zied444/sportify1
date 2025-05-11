@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="controllers.admin.EditProfileController"
+            stylesheets="@../styles/style.css">
+
+    <top>
+        <HBox style="-fx-background-color: #08080b;" spacing="20" alignment="CENTER_LEFT">
+            <padding>
+                <Insets top="15" right="30" bottom="15" left="30"/>
+            </padding>
+
+            <!-- Logo -->
+            <ImageView fitHeight="50" fitWidth="50" preserveRatio="true">
+                <Image url="/imgs/logo.png"/>
+            </ImageView>
+
+            <!-- Navigation Buttons -->
+            <HBox spacing="30" alignment="CENTER_RIGHT" HBox.hgrow="ALWAYS">
+                <Button text="Événements" styleClass="nav-button"/>
+                <Button text="Produits" styleClass="nav-button"/>
+                <Button text="Services" styleClass="nav-button"/>
+                <Button text="Entraînement" styleClass="nav-button"/>
+                <Button text="Avis" styleClass="nav-button"/>
+                <Button text="À propos" styleClass="nav-button"/>
+            </HBox>
+        </HBox>
+    </top>
+
+    <center>
+        <VBox styleClass="card" spacing="20" maxWidth="600" alignment="CENTER">
+            <padding>
+                <Insets top="20" right="20" bottom="20" left="20"/>
+            </padding>
+
+            <Label text="Modifier le Profil" styleClass="title-label"/>
+            
+            <GridPane styleClass="admin-grid" vgap="10" hgap="10">
+                <padding>
+                    <Insets top="20" right="20" bottom="20" left="20"/>
+                </padding>
+
+                <Label text="Nom:" styleClass="admin-label" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+                <TextField fx:id="nomField" styleClass="admin-text-field" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+
+                <Label text="Prénom:" styleClass="admin-label" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+                <TextField fx:id="prenomField" styleClass="admin-text-field" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+
+                <Label text="Email:" styleClass="admin-label" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+                <TextField fx:id="emailField" styleClass="admin-text-field" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+
+                <Label text="Mot de passe:" styleClass="admin-label" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+                <PasswordField fx:id="passwordField" styleClass="admin-password-field" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+
+                <Label text="Confirmer mot de passe:" styleClass="admin-label" GridPane.columnIndex="0" GridPane.rowIndex="4"/>
+                <PasswordField fx:id="confirmPasswordField" styleClass="admin-password-field" GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+            </GridPane>
+
+            <HBox spacing="10" alignment="CENTER">
+                <Button text="Enregistrer" onAction="#handleSave" styleClass="primary-button"/>
+                <Button text="Annuler" onAction="#handleCancel" styleClass="primary-button"/>
+            </HBox>
+        </VBox>
+    </center>
+</BorderPane> 

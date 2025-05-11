@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="controllers.admin.AdminDashboardController"
+            stylesheets="@../styles/style.css">
+
+    <!-- Top Bar -->
+    <top>
+        <HBox styleClass="card" spacing="20" alignment="CENTER_LEFT">
+            <padding>
+                <Insets top="20" right="20" bottom="20" left="20"/>
+            </padding>
+            <Label fx:id="welcomeLabel" styleClass="title-label" text="Hello, Admin"/>
+            <Region HBox.hgrow="ALWAYS"/>
+            <HBox spacing="10" alignment="CENTER_RIGHT">
+                <TextField fx:id="searchField" promptText="Rechercher par nom..." styleClass="text-field"/>
+                <ComboBox fx:id="roleFilter" promptText="Filtrer par rôle" styleClass="choice-box"/>
+                <Button text="Rechercher" onAction="#handleSearch" styleClass="primary-button"/>
+            </HBox>
+        </HBox>
+    </top>
+
+
+    <left>
+        <VBox styleClass="card" spacing="15" prefWidth="250">
+            <padding>
+                <Insets top="20" right="20" bottom="20" left="20"/>
+            </padding>
+            <Button text="Afficher Users" onAction="#handleShowUsers" styleClass="primary-button" maxWidth="Infinity"/>
+            <Button text="Modifier Profil" onAction="#handleEditProfile" styleClass="primary-button" maxWidth="Infinity"/>
+            <Button text="Supprimer Compte" onAction="#handleDeleteAccount" styleClass="danger-button" maxWidth="Infinity"/>
+            <Button text="Déconnexion" onAction="#handleLogout" styleClass="primary-button" maxWidth="Infinity"/>
+        </VBox>
+    </left>
+
+    <!-- Center Content -->
+    <center>
+        <VBox spacing="20">
+            <padding>
+                <Insets top="20" right="20" bottom="20" left="20"/>
+            </padding>
+            <TableView fx:id="userTable" styleClass="modern-table" VBox.vgrow="ALWAYS">
+                <columns>
+                    <TableColumn fx:id="colId" text="ID" prefWidth="50"/>
+                    <TableColumn fx:id="colNom" text="Nom" prefWidth="150"/>
+                    <TableColumn fx:id="colPrenom" text="Prénom" prefWidth="150"/>
+                    <TableColumn fx:id="colEmail" text="Email" prefWidth="200"/>
+                    <TableColumn fx:id="colRole" text="Rôle" prefWidth="100"/>
+                    <TableColumn fx:id="colActions" text="Actions" prefWidth="200"/>
+                </columns>
+            </TableView>
+        </VBox>
+    </center>
+
+</BorderPane>

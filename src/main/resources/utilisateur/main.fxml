@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.*?>
+
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<BorderPane xmlns="http://javafx.com/javafx/8"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="controllers.utilisateur.MainController"
+            prefHeight="600.0" prefWidth="800.0"
+            stylesheets="@../styles/style.css">
+
+    <top>
+        <HBox style="-fx-background-color: #08080b;" spacing="20" alignment="CENTER_LEFT">
+            <padding>
+                <Insets top="15" right="30" bottom="15" left="30"/>
+            </padding>
+            <ImageView fitHeight="50" fitWidth="50" preserveRatio="true">
+                <Image url="/imgs/logo.png"/>
+            </ImageView>
+            <HBox spacing="30" alignment="CENTER_RIGHT" HBox.hgrow="ALWAYS">
+                <Button text="Événements" styleClass="nav-button"/>
+                <Button text="Produits" styleClass="nav-button"/>
+                <Button text="Services" styleClass="nav-button"/>
+                <Button text="Entraînement" styleClass="nav-button"/>
+                <Button text="Avis" styleClass="nav-button"/>
+                <Button text="À propos" styleClass="nav-button"/>
+            </HBox>
+        </HBox>
+    </top>
+
+    <center>
+        <VBox alignment="CENTER" spacing="20">
+            <Label fx:id="welcomeLabel" styleClass="title-label"/>
+            <VBox spacing="15" alignment="CENTER" styleClass="card" prefWidth="400">
+                <Button text="Voir Profil" fx:id="viewProfileButton" styleClass="primary-button" prefWidth="300"/>
+                <Button text="Nos Programmes" fx:id="programsButton" styleClass="primary-button" prefWidth="300"/>
+                <Button text="Modifier le profil" fx:id="editProfileButton" styleClass="primary-button" prefWidth="300"/>
+                <Button text="Supprimer le compte" fx:id="deleteAccountButton" styleClass="danger-button" prefWidth="300"/>
+                <Button text="Se déconnecter" fx:id="logoutButton" styleClass="primary-button" prefWidth="300"/>
+            </VBox>
+        </VBox>
+    </center>
+</BorderPane>
+
+
+

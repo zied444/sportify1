@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.*?>
+<?import javafx.collections.FXCollections?>
+<?import constants.Roles?>
+
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<BorderPane xmlns="http://javafx.com/javafx/8"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="controllers.utilisateur.RegisterController"
+            prefHeight="600.0" prefWidth="800.0"
+            stylesheets="@../styles/style.css">
+
+    <top>
+        <HBox style="-fx-background-color: #08080b;" spacing="20" alignment="CENTER_LEFT">
+            <padding>
+                <Insets top="15" right="30" bottom="15" left="30"/>
+            </padding>
+
+            <!-- Logo -->
+            <ImageView fitHeight="50" fitWidth="50" preserveRatio="true">
+                <Image url="/imgs/logo.png"/>
+            </ImageView>
+
+            <!-- Navigation Buttons -->
+            <HBox spacing="30" alignment="CENTER_RIGHT" HBox.hgrow="ALWAYS">
+                <Button text="Événements" styleClass="nav-button"/>
+                <Button text="Produits" styleClass="nav-button"/>
+                <Button text="Services" styleClass="nav-button"/>
+                <Button text="Entraînement" styleClass="nav-button"/>
+                <Button text="Avis" styleClass="nav-button"/>
+                <Button text="À propos" styleClass="nav-button"/>
+            </HBox>
+        </HBox>
+    </top>
+
+    <center>
+        <StackPane>
+            <!-- Contenu principal -->
+            <VBox alignment="CENTER" spacing="20" maxWidth="800">
+                <padding>
+                    <Insets top="50" right="50" bottom="50" left="50"/>
+                </padding>
+                
+                <Label text="Créer un compte" styleClass="title-label"/>
+                <Label text="Remplissez le formulaire pour vous inscrire" styleClass="subtitle-label"/>
+                
+                <VBox spacing="15" alignment="CENTER" styleClass="card" prefWidth="400">
+                    <TextField fx:id="nomField" promptText="Nom" styleClass="text-field" prefWidth="300"/>
+                    <TextField fx:id="prenomField" promptText="Prénom" styleClass="text-field" prefWidth="300"/>
+                    <TextField fx:id="emailField" promptText="Email" styleClass="text-field" prefWidth="300"/>
+                    <PasswordField fx:id="passwordField" promptText="Mot de passe" styleClass="password-field" prefWidth="300"/>
+                    <TextField fx:id="preferencesField" promptText="Préférences sportives (ex: Football, Tennis)" styleClass="text-field" prefWidth="300"/>
+                    <ChoiceBox fx:id="roleChoiceBox" prefWidth="300"/>
+                    <HBox spacing="10" alignment="CENTER">
+                        <Button text="S'inscrire" fx:id="registerButton" styleClass="primary-button" prefWidth="145"/>
+                        <Button text="Annuler" fx:id="cancelButton" styleClass="primary-button" prefWidth="145"/>
+                    </HBox>
+                </VBox>
+            </VBox>
+
+            <!-- Bouton de retour en haut à gauche -->
+            <Button fx:id="backButton" text="Retour" styleClass="back-button" onAction="#handleBack"
+                    StackPane.alignment="TOP_LEFT">
+                <StackPane.margin>
+                    <Insets top="20" left="20"/>
+                </StackPane.margin>
+            </Button>
+        </StackPane>
+    </center>
+
+</BorderPane>
