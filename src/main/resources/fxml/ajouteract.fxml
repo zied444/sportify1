@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/21"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="Controllers.ajouteractController"
+            prefWidth="600" prefHeight="400"
+            style="-fx-background-color: #000000;"> <!-- fond noir intense -->
+
+    <!-- LOGO en haut à gauche, plus visible -->
+    <ImageView fitWidth="150" fitHeight="80" layoutX="20" layoutY="20" pickOnBounds="true" preserveRatio="true">
+        <image>
+            <Image url="@/Images/SportifyLogo.png" />
+        </image>
+    </ImageView>
+
+    <VBox alignment="CENTER" spacing="15" layoutX="100" layoutY="80" prefWidth="400">
+        <Label text="Ajouter une activité" textFill="white" style="-fx-font-size: 24; -fx-font-family: 'Arial Black';" />
+
+        <TextField fx:id="sportField" promptText="Sport" />
+        <TextField fx:id="dureeField" promptText="Durée (en minutes)" />
+        <DatePicker fx:id="datePicker" />
+        <TextField fx:id="prixField" promptText="Prix" />
+        <TextField fx:id="utilisateurIdField" promptText="ID Utilisateur" />
+        <TextField fx:id="lieuTextField" promptText="Lieu" />
+
+        <Label fx:id="coordsLabel" text="Coordonnées : " textFill="white" style="-fx-font-size: 14;" />
+
+        <HBox spacing="10">
+            <Button text="Ajouter" onAction="#ajouter" style="-fx-background-color: #e63946; -fx-text-fill: white;" />
+            <Button text="Annuler" onAction="#resetFields" style="-fx-background-color: #f1f1f1;" />
+        </HBox>
+    </VBox>
+
+</AnchorPane>
