@@ -6,7 +6,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.sportify</groupId>
-    <artifactId>sportify-utilisateur</artifactId>
+    <artifactId>sportify</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <properties>
