@@ -1,4 +1,4 @@
-package Controllers;
+package controllers;
 
 import Models.Evenement;
 import Services.EvenementService;
@@ -26,8 +26,9 @@ public class DisplayeventuserController {
 
     private final EvenementService evenementService = new EvenementService();
     private final ReservationService reservationService = new ReservationService();
-
+    private Stage stage;
     private final int utilisateurId = 1;
+
 
     @FXML
     public void initialize() {

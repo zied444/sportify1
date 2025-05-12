@@ -1,4 +1,4 @@
-package Controllers;
+package controllers;
 
 import Models.Evenement;
 import Services.EvenementService;

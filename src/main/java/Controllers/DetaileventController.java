@@ -1,4 +1,4 @@
-package Controllers;
+package controllers;
 
 import Models.Evenement;
 import javafx.fxml.FXML;

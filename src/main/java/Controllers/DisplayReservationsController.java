@@ -1,4 +1,4 @@
-package Controllers;
+package controllers;
 
 import Models.Reservation;
 import Services.ReservationService;

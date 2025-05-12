@@ -9,7 +9,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.control.Button?>
 
-<AnchorPane prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #232946;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.DetaileventController">
+<AnchorPane prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #232946;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.DetaileventController">
    <children>
       <!-- Image de fond sportive -->
       <ImageView fitHeight="600.0" fitWidth="800.0" layoutX="0.0" layoutY="0.0" opacity="0.18" preserveRatio="false">

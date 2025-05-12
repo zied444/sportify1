@@ -1,3 +1,4 @@
+import controllers.DisplayeventuserController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -18,6 +19,9 @@ public class Main extends Application {
 
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/utilisateur/login.fxml"));
             Parent root = loader.load();
+
+           /*/ DisplayeventuserController DisplayeventuserController = loader.getController();
+            DisplayeventuserController.setStage(primaryStage);*/
 
 
             LoginController loginController = loader.getController();

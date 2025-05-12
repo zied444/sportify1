@@ -12,7 +12,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="700.0" prefWidth="900.0" style="-fx-background-color: #232946;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.AddeventController">
+<AnchorPane prefHeight="700.0" prefWidth="900.0" style="-fx-background-color: #232946;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AddeventController">
    <children>
       <!-- Image de fond sportive -->
       <ImageView fitHeight="700.0" fitWidth="900.0" layoutX="0.0" layoutY="0.0" opacity="0.18" preserveRatio="false">
