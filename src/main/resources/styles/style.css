@@ -44,7 +44,7 @@
     -fx-scale-y: 1.04;
 }
 
-/* Boutons Danger -> inchangés */
+
 .danger-button {
     -fx-background-color: #de350b;
     -fx-text-fill: #fff;
@@ -77,14 +77,14 @@
     -fx-effect: dropshadow(gaussian, rgba(245,124,0,0.12), 8, 0, 0, 2);
 }
 
-/* Labels */
+
 GridPane Label {
     -fx-font-size: 13px;
     -fx-text-fill: #42526e;
     -fx-font-weight: normal;
 }
 
-/* Grille */
+
 GridPane {
     -fx-hgap: 15;
     -fx-vgap: 10;
@@ -97,7 +97,7 @@ GridPane .password-field {
     -fx-min-width: 250px;
 }
 
-/* Liens */
+
 .hyperlink {
     -fx-text-fill: #f57c00;
     -fx-font-size: 14px;
@@ -109,7 +109,7 @@ GridPane .password-field {
     -fx-underline: true;
 }
 
-/* Cartes */
+
 .card {
     -fx-background-color: white;
     -fx-background-radius: 24px;

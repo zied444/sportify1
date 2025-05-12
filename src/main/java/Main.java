@@ -35,9 +35,9 @@ public class Main extends Application {
                 System.out.println("Logo not found: " + e.getMessage());
             }
 
-            primaryStage.setMaximized(true);
-            primaryStage.setMinWidth(900);
-            primaryStage.setMinHeight(700);
+
+            primaryStage.setMinWidth(700);
+            primaryStage.setMinHeight(900);
 
             primaryStage.setScene(scene);
             
