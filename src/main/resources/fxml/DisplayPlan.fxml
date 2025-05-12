@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox spacing="10" xmlns:fx="http://javafx.com/fxml" fx:controller="com.spotify.controllers.DisplayPlanController">
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+
+    <Label text="Liste des plans d'entraînement" style="-fx-font-size: 20px; -fx-font-weight: bold;"/>
+    
+    <TableView fx:id="plansTable" VBox.vgrow="ALWAYS">
+        <columns>
+            <TableColumn text="Nom" fx:id="nomColumn" prefWidth="150"/>
+            <TableColumn text="Athlète" fx:id="utilisateurColumn" prefWidth="120"/>
+            <TableColumn text="Coach" fx:id="coachColumn" prefWidth="120"/>
+            <TableColumn text="Date de création" fx:id="dateCreationColumn" prefWidth="120"/>
+            <TableColumn text="Type d'activité" fx:id="typeActiviteColumn" prefWidth="120"/>
+            <TableColumn text="Contenu" fx:id="contenuColumn" prefWidth="300"/>
+        </columns>
+    </TableView>
+</VBox> 

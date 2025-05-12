@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.spotify.controllers.UpdatePlanController"
+      spacing="10" padding="10">
+    
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+
+    <Label text="Modifier un Plan d'Entraînement" style="-fx-font-size: 20px; -fx-font-weight: bold;"/>
+    
+    <GridPane vgap="10" hgap="10">
+        <Label text="ID du Plan:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+        <TextField fx:id="idField" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+        
+        <Label text="Titre:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+        <TextField fx:id="titreField" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+        
+        <Label text="Contenu:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+        <TextArea fx:id="contenuField" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+        
+        <Label text="Date Début:" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+        <DatePicker fx:id="dateDebutPicker" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+        
+        <Label text="Date Fin:" GridPane.columnIndex="0" GridPane.rowIndex="4"/>
+        <DatePicker fx:id="dateFinPicker" GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+    </GridPane>
+
+    <HBox spacing="10" alignment="CENTER_RIGHT">
+        <Button text="Annuler" onAction="#handleAnnuler"/>
+        <Button text="Modifier" onAction="#handleModifier"/>
+    </HBox>
+</VBox> 

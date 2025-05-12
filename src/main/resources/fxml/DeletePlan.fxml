@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.spotify.controllers.DeletePlanController"
+      spacing="10" padding="10">
+    
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+
+    <Label text="Supprimer un Plan d'Entraînement" style="-fx-font-size: 20px; -fx-font-weight: bold;"/>
+    
+    <GridPane vgap="10" hgap="10">
+        <Label text="ID du Plan:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+        <TextField fx:id="idField" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+    </GridPane>
+
+    <HBox spacing="10" alignment="CENTER_RIGHT">
+        <Button text="Annuler" onAction="#handleAnnuler"/>
+        <Button text="Supprimer" onAction="#handleSupprimer" style="-fx-background-color: #ff4444;"/>
+    </HBox>
+</VBox> 

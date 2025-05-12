@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.spotify.controllers.MainController"
+      spacing="10" padding="10">
+    
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <Button text="Ajouter Plan" onAction="#handleAjouterPlan"/>
+        <Button text="Modifier Plan" onAction="#handleUpdatePlan"/>
+        <Button text="Supprimer Plan" onAction="#handleDeletePlan"/>
+        <Button text="Afficher Plans" onAction="#handleDisplayPlans"/>
+    </HBox>
+
+    <TableView fx:id="plansTable" VBox.vgrow="ALWAYS">
+        <columns>
+            <TableColumn fx:id="idColumn" text="ID"/>
+            <TableColumn fx:id="titreColumn" text="Titre"/>
+            <TableColumn fx:id="contenuColumn" text="Contenu"/>
+            <TableColumn fx:id="dateDebutColumn" text="Date Début"/>
+            <TableColumn fx:id="dateFinColumn" text="Date Fin"/>
+        </columns>
+    </TableView>
+</VBox> 

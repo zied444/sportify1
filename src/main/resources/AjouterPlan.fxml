@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox spacing="10" xmlns:fx="http://javafx.com/fxml" fx:controller="com.spotify.controllers.AjouterPlanController">
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+
+    <Label text="Ajouter un nouveau plan d'entraînement" style="-fx-font-size: 20px; -fx-font-weight: bold;"/>
+    
+    <GridPane vgap="10" hgap="10">
+        <Label text="Nom du plan:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+        <TextField fx:id="nomPlanField" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+        
+        <Label text="Date de création:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+        <DatePicker fx:id="dateCreationPicker" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+        
+        <Label text="Type d'activité:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+        <ComboBox fx:id="typeActiviteCombo" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+        
+        <Label text="Contenu (exercices):" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+        <TextArea fx:id="contenuArea" GridPane.columnIndex="1" GridPane.rowIndex="3" prefRowCount="5"/>
+        
+        <Label text="Commentaire:" GridPane.columnIndex="0" GridPane.rowIndex="4"/>
+        <TextArea fx:id="commentaireArea" GridPane.columnIndex="1" GridPane.rowIndex="4" prefRowCount="3"/>
+    </GridPane>
+    
+    <HBox spacing="10" alignment="CENTER_RIGHT">
+        <Button fx:id="annulerButton" text="Annuler"/>
+        <Button fx:id="ajouterButton" text="Ajouter" defaultButton="true"/>
+    </HBox>
+    
+    <Label fx:id="messageLabel" style="-fx-text-fill: red;"/>
+</VBox> 

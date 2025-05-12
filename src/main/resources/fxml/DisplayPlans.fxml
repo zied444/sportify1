@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.spotify.controllers.DisplayPlansController"
+      spacing="10" padding="10">
+    
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+
+    <Label text="Liste des Plans d'Entraînement" style="-fx-font-size: 20px; -fx-font-weight: bold;"/>
+    
+    <TableView fx:id="plansTable" VBox.vgrow="ALWAYS">
+        <columns>
+            <TableColumn fx:id="idColumn" text="ID"/>
+            <TableColumn fx:id="titreColumn" text="Titre"/>
+            <TableColumn fx:id="contenuColumn" text="Contenu"/>
+            <TableColumn fx:id="dateDebutColumn" text="Date Début"/>
+            <TableColumn fx:id="dateFinColumn" text="Date Fin"/>
+        </columns>
+    </TableView>
+
+    <HBox spacing="10" alignment="CENTER_RIGHT">
+        <Button text="Fermer" onAction="#handleFermer"/>
+    </HBox>
+</VBox> 
