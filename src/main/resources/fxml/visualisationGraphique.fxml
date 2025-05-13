@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefWidth="600.0" prefHeight="400.0"
+            xmlns="http://javafx.com/javafx/21"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="Controllers.VisualisationGraphiqueController"
+            stylesheets="@../Css/style.css"
+            styleClass="root"> <!-- Appliqué le fond gris ici -->
+
+    <!-- Graphique -->
+    <LineChart fx:id="lineChart"
+               layoutX="50" layoutY="50"
+               prefWidth="500.0" prefHeight="300.0" styleClass="line-chart">
+        <xAxis>
+            <NumberAxis fx:id="xAxis" side="BOTTOM" label="Mois"/>
+        </xAxis>
+        <yAxis>
+            <NumberAxis fx:id="yAxis" side="LEFT" label="Calories Brûlées"/>
+        </yAxis>
+    </LineChart>
+
+    <!-- Bouton Retour -->
+    <Button text="Retour au Menu" layoutX="20" layoutY="360"
+            onAction="#retourMenu" styleClass="graph-back-button"/>
+</AnchorPane>
+
+
+

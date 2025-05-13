@@ -1,13 +1,24 @@
 package Controllers;
+
 import Api.GeoLocalisationApi;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
+import Service.ActiviteSportiveService;
+import Models.ActiviteSportive;
 
+import java.io.IOException;
+import java.sql.Date;
 import java.time.LocalDate;
+import java.util.List;
 
 public class ajouteractController {
 
@@ -47,21 +58,25 @@ public class ajouteractController {
             double prix = Double.parseDouble(prixText);
             int utilisateurId = Integer.parseInt(utilisateurIdText);
 
-            // Affichage console (ou base de données)
-            System.out.println("Nouvelle activité ajoutée :");
-            System.out.println("Sport : " + sport);
-            System.out.println("Durée : " + duree + " min");
-            System.out.println("Date : " + date);
-            System.out.println("Prix : " + prix + " €");
-            System.out.println("ID Utilisateur : " + utilisateurId);
+            // Création de l'objet ActiviteSportive
+            ActiviteSportive activite = new ActiviteSportive(sport, duree, Date.valueOf(date), prix, utilisateurId);
 
-            // Récupérer les coordonnées à partir de l'API
-            String lieu = sportField.getText(); // Exemple : lieu basé sur le sport ou un autre champ
-            String coords = GeoLocalisationApi.getCoordinates(lieu);
-            System.out.println("Coordonnées : " + coords);
+            // Création du service et appel de la méthode Create
+            ActiviteSportiveService service = new ActiviteSportiveService();
+            service.Create(activite);  // <-- Cette ligne permet d'ajouter l'activité à la base de données
 
-            // Mettre à jour le Label avec les coordonnées
-            coordsLabel.setText("Coordonnées : " + coords);
+            // Récupérer les données de la base après insertion
+            List<ActiviteSportive> activites = service.getAllActivites();  // ✅ CORRECT
+
+            // Affichage des activités dans la console (ou toute autre logique pour l'afficher)
+            for (ActiviteSportive a : activites) {
+                System.out.println("Activité : " + a.getSport() + ", Durée : " + a.getDuree() + " min, Date : " + a.getDate_activite() + ", Prix : " + a.getPrix_par_activite() + " €");
+            }
+
+            // **Appel à l'API de géolocalisation**
+            String location = sport;  // Ou tu peux récupérer une autre donnée de localisation selon ton besoin
+            String coordinates = GeoLocalisationApi.getCoordinates(location);  // Appel à l'API
+            coordsLabel.setText(coordinates);  // Affichage des coordonnées dans le Label
 
             // Message succès
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -91,6 +106,22 @@ public class ajouteractController {
         coordsLabel.setText("Coordonnées : Non disponibles"); // Réinitialiser le label
     }
 
+    @FXML
+    void cancelAction(ActionEvent event) throws IOException {
+        // Utilisation du chemin relatif correct à partir de 'resources' dans le dossier 'src/main/resources'
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/menu.fxml"));  // Notez le '/'
+
+        // Charge la scène dans un nouveau parent (root)
+        Parent root = loader.load();
+
+        // Crée la nouvelle scène et l'ajoute à la fenêtre principale (stage)
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(new Scene(root));
+
+        // Affiche la nouvelle scène
+        stage.show();
+    }
+
     private void showAlert(Alert.AlertType type, String title, String content) {
         Alert alert = new Alert(type);
         alert.setTitle(title);
@@ -99,6 +130,3 @@ public class ajouteractController {
         alert.showAndWait();
     }
 }
-
-
-

@@ -8,9 +8,9 @@
             xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="Controllers.ajouteractController"
             prefWidth="600" prefHeight="400"
-            style="-fx-background-color: #000000;"> <!-- fond noir intense -->
+            stylesheets="@/Css/style.css"> <!-- Lien vers le fichier CSS -->
 
-    <!-- LOGO en haut à gauche, plus visible -->
+    <!-- LOGO en haut à gauche -->
     <ImageView fitWidth="150" fitHeight="80" layoutX="20" layoutY="20" pickOnBounds="true" preserveRatio="true">
         <image>
             <Image url="@/Images/SportifyLogo.png" />
@@ -18,7 +18,7 @@
     </ImageView>
 
     <VBox alignment="CENTER" spacing="15" layoutX="100" layoutY="80" prefWidth="400">
-        <Label text="Ajouter une activité" textFill="white" style="-fx-font-size: 24; -fx-font-family: 'Arial Black';" />
+        <Label text="Ajouter une activité" fx:id="titreLabel" />
 
         <TextField fx:id="sportField" promptText="Sport" />
         <TextField fx:id="dureeField" promptText="Durée (en minutes)" />
@@ -27,11 +27,11 @@
         <TextField fx:id="utilisateurIdField" promptText="ID Utilisateur" />
         <TextField fx:id="lieuTextField" promptText="Lieu" />
 
-        <Label fx:id="coordsLabel" text="Coordonnées : " textFill="white" style="-fx-font-size: 14;" />
+        <Label fx:id="coordsLabel" text="Coordonnées : " />
 
         <HBox spacing="10">
-            <Button text="Ajouter" onAction="#ajouter" style="-fx-background-color: #e63946; -fx-text-fill: white;" />
-            <Button text="Annuler" onAction="#resetFields" style="-fx-background-color: #f1f1f1;" />
+            <Button text="Ajouter" onAction="#ajouter" fx:id="ajouterButton" />
+            <Button text="Annuler" onAction="#cancelAction" fx:id="annulerButton" />
         </HBox>
     </VBox>
 

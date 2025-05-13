@@ -7,7 +7,13 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="467.0" prefWidth="499.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.MenuController">
+<AnchorPane prefHeight="467.0" prefWidth="499.0"
+            fx:controller="Controllers.MenuController"
+            xmlns="http://javafx.com/javafx/23.0.1"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:id="menuRoot"
+            stylesheets="@/Css/style.css"
+            styleClass="root">
 
     <!-- LOGO Sportify -->
     <ImageView fitHeight="86.0" fitWidth="148.0" layoutX="20" layoutY="20" pickOnBounds="true" preserveRatio="true">
@@ -16,17 +22,28 @@
         </image>
     </ImageView>
 
-    <!-- Contenu du menu centré -->
+    <!-- Contenu centré -->
     <VBox alignment="CENTER" layoutX="80" layoutY="100" prefWidth="339" spacing="20">
-        <Text style="-fx-font-size: 24px; -fx-fill: white;" text="Menu des Activités" />
+        <Text text="Menu des Activités" styleClass="title-label" />
 
-        <Button onAction="#goToAjouter" style="-fx-background-color: red; -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 14px; -fx-padding: 10 20 10 20;" text="Ajouter une activité" />
-
-        <Button onAction="#goToModifier" style="-fx-background-color: grey; -fx-text-fill: black; -fx-font-weight: bold; -fx-font-size: 14px; -fx-padding: 10 20 10 20;" text="Modifier une activité" />
-
-        <Button onAction="#goToSupprimer" style="-fx-background-color: white; -fx-text-fill: red; -fx-font-weight: bold; -fx-font-size: 14px; -fx-padding: 10 20 10 20;" text="Supprimer une activité" />
-
-        <Button onAction="#goToAfficher" style="-fx-background-color: darkgrey; -fx-text-fill: black; -fx-font-weight: bold; -fx-font-size: 14px; -fx-padding: 10 20 10 20;" text="Afficher les activités" />
+        <!-- Boutons avec forme et couleurs du style CSS (Orangé et Vert) -->
+        <Button onAction="#goToAjouter" text="Ajouter une activité" styleClass="primary-button"/> <!-- Orangé -->
+        <Button onAction="#goToModifier" text="Modifier une activité" styleClass="primary-button"/> <!-- Orangé -->
+        <Button onAction="#goToSupprimer" text="Supprimer une activité" styleClass="primary-button"/> <!-- Orangé -->
+        <Button onAction="#goToAfficher" text="Afficher les activités" styleClass="primary-button"/> <!-- Orangé -->
+        <Button onAction="#goToVisualisationGraphique" text="Visualisation graphique" styleClass="primary-button"/> <!-- Orangé -->
+        <Button onAction="#goToCalories" text="Suivi calorique" styleClass="primary-button"/> <!-- Orangé -->
+        <Button onAction="#goToHydratation" text="Suivi hydratation" styleClass="primary-button"/> <!-- Orangé -->
     </VBox>
 
 </AnchorPane>
+
+
+
+
+
+
+
+
+
+

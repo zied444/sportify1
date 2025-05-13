@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane fx:id="root" prefHeight="600.0" prefWidth="800.0"
+            xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/23.0.1"
+            fx:controller="Controllers.HydratationController" stylesheets="@../Css/style.css">
+
+    <!-- Image agrandie pour couvrir toute l'interface -->
+    <ImageView fx:id="imageView" layoutX="0" layoutY="0" fitWidth="800.0" fitHeight="600.0"
+               pickOnBounds="true" preserveRatio="false" styleClass="image-view">
+        <image>
+            <Image url="@/Images/eau.jpeg" />
+        </image>
+    </ImageView>
+
+    <!-- VBox principal contenant les éléments -->
+    <VBox alignment="CENTER" layoutX="171.0" layoutY="86.0" prefHeight="314.0"
+          prefWidth="491.0" spacing="20.0" styleClass="vbox-container">
+
+        <!-- Titre principal avec taille grande et en gras -->
+        <Label text="Suivi d'Hydratation et Performances Sportives"
+               style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: black;" />
+
+
+        <!-- Champs de texte pour l'hydratation et les performances -->
+        <TextField fx:id="amountField" prefWidth="300.0" promptText="Quantité d'eau (en litres)"
+                   styleClass="text-field" />
+        <TextField fx:id="performanceBeforeField" prefWidth="300.0"
+                   promptText="Performance avant l'hydratation" styleClass="text-field" />
+        <TextField fx:id="performanceAfterField" prefWidth="300.0"
+                   promptText="Performance après l'hydratation" styleClass="text-field" />
+
+        <!-- Bouton pour ajouter l'hydratation -->
+        <Button onAction="#addHydration" text="Ajouter Hydratation" styleClass="button" />
+
+        <!-- Affichage des statistiques -->
+        <VBox fx:id="statsVBox" spacing="10.0" styleClass="vbox-stats">
+            <Label text="Impact moyen de l'hydratation : " styleClass="label-info" />
+        </VBox>
+
+        <!-- Bouton de retour -->
+        <Button text="Retour" fx:id="btnRetour" onAction="#goToMenu" prefWidth="120.0" />
+    </VBox>
+
+</AnchorPane>
+
+
+

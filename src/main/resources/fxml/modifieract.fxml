@@ -8,7 +8,7 @@
         xmlns="http://javafx.com/javafx/21"
         xmlns:fx="http://javafx.com/fxml/1"
         fx:controller="Controllers.modifieractController"
-        style="-fx-background-color: #1c1c1c;">
+        stylesheets="@/Css/style.css"> <!-- Chemin relatif vers le CSS -->
 
     <VBox
             spacing="10.0"
@@ -18,8 +18,7 @@
 
         <Label
                 text="Modifier une activité"
-                textFill="#f1f1f1"
-                style="-fx-font-size: 24;" />
+                style="-fx-font-size: 36px; -fx-font-weight: bold; -fx-font-family: 'Arial'; -fx-text-fill: #2e2e2e;" />
 
         <TableView fx:id="tableView" prefWidth="500.0" prefHeight="200.0">
             <columns>
@@ -40,10 +39,14 @@
 
         <Button
                 text="Modifier"
-                onAction="#modifier"
-                style="-fx-background-color: #e63946; -fx-text-fill: white;" />
+                onAction="#modifier" />
+
+        <Button
+                text="Annuler"
+                onAction="#annulerAction" />
 
     </VBox>
 
 </AnchorPane>
+
 

@@ -4,15 +4,19 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import models.ActiviteSportive;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+import javafx.scene.Node;
+import Models.ActiviteSportive;
+import Service.ActiviteSportiveService;
 
 import java.sql.Date;
+import java.io.IOException;
 
-/**
- * Contrôleur pour modifier une activité sportive existante.
- */
 public class modifieractController {
 
     @FXML
@@ -53,75 +57,78 @@ public class modifieractController {
 
     private ObservableList<ActiviteSportive> activiteList;
     private ActiviteSportive selectedActivite;
+    private ActiviteSportiveService activiteService;
 
-    /**
-     * Initialise la table et ses colonnes, puis charge les données.
-     */
     @FXML
     public void initialize() {
-        // Configuration des colonnes
-        colId.setCellValueFactory(new PropertyValueFactory<>("id"));
+        activiteService = new ActiviteSportiveService();
+
+        colId.setCellValueFactory(new PropertyValueFactory<>("id_activite"));
         colSport.setCellValueFactory(new PropertyValueFactory<>("sport"));
         colDuree.setCellValueFactory(new PropertyValueFactory<>("duree"));
-        colDate.setCellValueFactory(new PropertyValueFactory<>("dateActivite"));
-        colPrix.setCellValueFactory(new PropertyValueFactory<>("prix"));
-        colUtilisateurId.setCellValueFactory(new PropertyValueFactory<>("utilisateurId"));
+        colDate.setCellValueFactory(new PropertyValueFactory<>("date_activite"));
+        colPrix.setCellValueFactory(new PropertyValueFactory<>("prix_par_activite"));
+        colUtilisateurId.setCellValueFactory(new PropertyValueFactory<>("utilisateur_id"));
 
-        // Charger les données initiales
         loadData();
 
-        // Ajout d'un listener pour la sélection
-        tableView.getSelectionModel().selectedItemProperty().addListener((obs, oldSel, newSel) -> {
-            if (newSel != null) {
-                selectedActivite = newSel;
-                sportField.setText(newSel.getSport());
-                dureeField.setText(String.valueOf(newSel.getDuree()));
-                datePicker.setValue(newSel.getDateActivite().toLocalDate());
-                prixField.setText(String.valueOf(newSel.getPrix()));
-                utilisateurIdField.setText(String.valueOf(newSel.getUtilisateurId()));
+        // Sélection d'une ligne
+        tableView.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
+            if (newSelection != null) {
+                selectedActivite = newSelection;
+                sportField.setText(newSelection.getSport());
+                dureeField.setText(String.valueOf(newSelection.getDuree()));
+                datePicker.setValue(newSelection.getDate_activite().toLocalDate());
+                prixField.setText(String.valueOf(newSelection.getPrix_par_activite()));
+                utilisateurIdField.setText(String.valueOf(newSelection.getUtilisateur_id()));
             }
         });
     }
 
-    /**
-     * Charge ou recharge la liste d'activités (à remplacer par récupération depuis la BDD).
-     */
     private void loadData() {
-        activiteList = FXCollections.observableArrayList(
-                new ActiviteSportive(1, "Football", 90, Date.valueOf("2025-05-06"), 15.0, 101),
-                new ActiviteSportive(2, "Natation", 60, Date.valueOf("2025-05-07"), 10.0, 102),
-                new ActiviteSportive(3, "Yoga", 45, Date.valueOf("2025-05-08"), 12.5, 103)
-        );
-        tableView.setItems(activiteList);
+        try {
+            activiteList = FXCollections.observableArrayList(activiteService.getAllActivites());
+            tableView.setItems(activiteList);
+        } catch (Exception e) {
+            e.printStackTrace();
+            showAlert(Alert.AlertType.ERROR, "Erreur", "Erreur de récupération des activités.");
+        }
     }
 
-    /**
-     * Méthode appelée lors du clic sur le bouton "Modifier".
-     */
     @FXML
     private void modifier(ActionEvent event) {
         if (selectedActivite == null) {
-            showAlert(Alert.AlertType.WARNING, "Aucune sélection", "Veuillez sélectionner une activité à modifier.");
+            showAlert(Alert.AlertType.WARNING, "Aucune sélection", "Veuillez sélectionner une activité.");
             return;
         }
         try {
-            // Mise à jour des attributs
             selectedActivite.setSport(sportField.getText());
             selectedActivite.setDuree(Integer.parseInt(dureeField.getText()));
-            selectedActivite.setDateActivite(Date.valueOf(datePicker.getValue()));
-            selectedActivite.setPrix(Double.parseDouble(prixField.getText()));
-            selectedActivite.setUtilisateurId(Integer.parseInt(utilisateurIdField.getText()));
+            selectedActivite.setDate_activite(Date.valueOf(datePicker.getValue()));
+            selectedActivite.setPrix_par_activite(Double.parseDouble(prixField.getText()));
+            selectedActivite.setUtilisateur_id(Integer.parseInt(utilisateurIdField.getText()));
 
-            tableView.refresh();
+            activiteService.updateActivite(selectedActivite);
+            loadData();
+
             showAlert(Alert.AlertType.INFORMATION, "Succès", "Activité modifiée avec succès.");
         } catch (NumberFormatException e) {
-            showAlert(Alert.AlertType.ERROR, "Erreur de saisie", "Vérifiez les champs numériques.");
+            showAlert(Alert.AlertType.ERROR, "Erreur", "Format numérique invalide.");
+        } catch (Exception e) {
+            e.printStackTrace();
+            showAlert(Alert.AlertType.ERROR, "Erreur", "Échec de la mise à jour.");
         }
     }
 
-    /**
-     * Affiche un message d'alerte.
-     */
+    @FXML
+    private void annulerAction(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/menu.fxml"));
+        Parent root = loader.load();
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(new Scene(root));
+        stage.show();
+    }
+
     private void showAlert(Alert.AlertType type, String title, String content) {
         Alert alert = new Alert(type);
         alert.setTitle(title);
@@ -130,4 +137,6 @@ public class modifieractController {
         alert.showAndWait();
     }
 }
+
+
 

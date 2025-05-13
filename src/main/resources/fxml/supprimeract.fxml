@@ -11,7 +11,7 @@
         xmlns="http://javafx.com/javafx/21"
         xmlns:fx="http://javafx.com/fxml/1"
         fx:controller="Controllers.supprimeractController"
-        style="-fx-background-color: #1c1c1c;">
+        stylesheets="@/Css/style.css"> <!-- Lien vers le fichier CSS -->
 
     <VBox
             alignment="CENTER"
@@ -21,25 +21,33 @@
 
         <Label
                 text="Supprimer une activité"
-                textFill="#f1f1f1"
-                style="-fx-font-size: 24;" />
+                fx:id="titreLabel" />
 
         <TableView
                 fx:id="tableView"
                 prefWidth="861.0" prefHeight="389.0">
             <columns>
-                <TableColumn fx:id="colId"    text="ID" />
+                <TableColumn fx:id="colId" text="ID" />
                 <TableColumn fx:id="colSport" text="Sport" />
-                <TableColumn fx:id="colDate"  text="Date" />
+                <TableColumn fx:id="colDuree" text="Durée" />
+                <TableColumn fx:id="colDate" text="Date" />
+                <TableColumn fx:id="colPrix" text="Prix" />
+                <TableColumn fx:id="colUtilisateurId" text="Utilisateur ID" />
             </columns>
         </TableView>
 
         <Button
                 text="Supprimer"
                 onAction="#supprimer"
-                style="-fx-background-color: #e63946; -fx-text-fill: white;"
+                fx:id="supprimerButton"
                 prefWidth="120.0" />
 
+        <Button
+                text="Retour"
+                fx:id="btnRetour"
+                onAction="#goToMenu"
+                prefWidth="120.0" />
     </VBox>
 </AnchorPane>
+
 

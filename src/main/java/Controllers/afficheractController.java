@@ -2,17 +2,25 @@ package Controllers;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import models.ActiviteSportive;
+import javafx.scene.Node;
+import javafx.stage.Stage;
+import javafx.event.Event;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import Models.ActiviteSportive;
+import Service.ActiviteSportiveService;
 
+import java.io.IOException;
+import java.sql.SQLException;
 import java.sql.Date;
 
-/**
- * Contrôleur pour afficher la liste des activités sportives.
- */
 public class afficheractController {
 
     @FXML
@@ -36,44 +44,76 @@ public class afficheractController {
     @FXML
     private TableColumn<ActiviteSportive, Integer> colUtilisateurId;
 
-    private ObservableList<ActiviteSportive> activiteList;
+    private final ActiviteSportiveService activiteService = new ActiviteSportiveService();
 
-    /**
-     * Méthode d'initialisation appelée automatiquement après le chargement du FXML.
-     */
     @FXML
     public void initialize() {
-        // Initialisation des colonnes de la table
-        colId.setCellValueFactory(new PropertyValueFactory<>("id"));
+        colId.setCellValueFactory(new PropertyValueFactory<>("id_activite"));
         colSport.setCellValueFactory(new PropertyValueFactory<>("sport"));
         colDuree.setCellValueFactory(new PropertyValueFactory<>("duree"));
-        colDate.setCellValueFactory(new PropertyValueFactory<>("dateActivite"));
-        colPrix.setCellValueFactory(new PropertyValueFactory<>("prix"));
-        colUtilisateurId.setCellValueFactory(new PropertyValueFactory<>("utilisateurId"));
+        colDate.setCellValueFactory(new PropertyValueFactory<>("date_activite"));
+        colPrix.setCellValueFactory(new PropertyValueFactory<>("prix_par_activite"));
+        colUtilisateurId.setCellValueFactory(new PropertyValueFactory<>("utilisateur_id"));
 
-        // Chargement initial des données
         loadData();
     }
 
-    /**
-     * Méthode appelée lors du clic sur "Actualiser" pour rafraîchir la table.
-     */
     @FXML
-    private void updateTable() {
+    private void updateTable(ActionEvent event) {
         loadData();
     }
 
-    /**
-     * Charge les données dans l'ObservableList (à remplacer par une récupération DB).
-     */
     private void loadData() {
-        // Exemple de données statiques
-        activiteList = FXCollections.observableArrayList(
-                new ActiviteSportive(1, "Football", 90, Date.valueOf("2025-05-06"), 15.0, 101),
-                new ActiviteSportive(2, "Natation", 60, Date.valueOf("2025-05-07"), 10.0, 102),
-                new ActiviteSportive(3, "Yoga", 45, Date.valueOf("2025-05-08"), 12.5, 103)
-        );
+        try {
+            ObservableList<ActiviteSportive> list = FXCollections.observableArrayList(
+                    activiteService.getAllActivites()
+            );
+            tableView.setItems(list);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            showAlert(Alert.AlertType.ERROR, "Erreur", "Impossible de charger les données depuis la base.");
+        }
+    }
 
-        tableView.setItems(activiteList);
+    private void showAlert(Alert.AlertType type, String title, String content) {
+        Alert alert = new Alert(type);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(content);
+        alert.showAndWait();
+    }
+
+    // ✅ Correction : méthode manquante pour le bouton "Annuler"
+    @FXML
+    private void annulerAction(ActionEvent event) {
+        // Fermer la fenêtre actuelle
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.close();
+    }
+
+    // Méthode pour revenir au menu
+    @FXML
+    private void goToMenu(ActionEvent event) {
+        try {
+            // Charger le fichier FXML du menu
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/menu.fxml"));
+            Parent root = loader.load();
+
+            // Créer une nouvelle scène
+            Scene scene = new Scene(root);
+
+            // Récupérer la fenêtre actuelle
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+            // Mettre à jour la scène de la fenêtre actuelle
+            stage.setScene(scene);
+            stage.show();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
+
+
+

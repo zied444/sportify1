@@ -3,18 +3,20 @@ package Controllers;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import models.ActiviteSportive;
+import javafx.scene.Node;
+import javafx.stage.Stage;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import Service.ActiviteSportiveService;
+import Models.ActiviteSportive;
 
-import java.sql.Date;
+import java.io.IOException;
+import java.sql.SQLException;
 
-/**
- * Contrôleur pour supprimer une activité sportive existante.
- */
 public class supprimeractController {
 
     @FXML
@@ -27,58 +29,74 @@ public class supprimeractController {
     private TableColumn<ActiviteSportive, String> colSport;
 
     @FXML
-    private TableColumn<ActiviteSportive, Date> colDate;
+    private TableColumn<ActiviteSportive, Integer> colDuree;
+
+    @FXML
+    private TableColumn<ActiviteSportive, String> colDate;
+
+    @FXML
+    private TableColumn<ActiviteSportive, Double> colPrix;
+
+    @FXML
+    private TableColumn<ActiviteSportive, Integer> colUtilisateurId;
 
     @FXML
     private Button supprimerButton;
 
-    private ObservableList<ActiviteSportive> activiteList;
+    @FXML
+    private Button btnRetour;
 
-    /**
-     * Initialisation automatique après le chargement du FXML.
-     */
+    private ObservableList<ActiviteSportive> activiteList;
+    private ActiviteSportiveService activiteService;
+
     @FXML
     public void initialize() {
+        activiteService = new ActiviteSportiveService();
+
         // Configuration des colonnes
-        colId.setCellValueFactory(new PropertyValueFactory<>("id"));
+        colId.setCellValueFactory(new PropertyValueFactory<>("id_activite"));
         colSport.setCellValueFactory(new PropertyValueFactory<>("sport"));
-        colDate.setCellValueFactory(new PropertyValueFactory<>("dateActivite"));
+        colDuree.setCellValueFactory(new PropertyValueFactory<>("duree"));
+        colDate.setCellValueFactory(new PropertyValueFactory<>("date_activite"));
+        colPrix.setCellValueFactory(new PropertyValueFactory<>("prix_par_activite"));
+        colUtilisateurId.setCellValueFactory(new PropertyValueFactory<>("utilisateur_id"));
 
-        // Charger les données initiales
-        loadData();
+        loadData(); // Charger les données initiales
     }
 
-    /**
-     * Charge les données dans la table (à remplacer par récupération BD).
-     */
     private void loadData() {
-        activiteList = FXCollections.observableArrayList(
-                new ActiviteSportive(1, "Football", 90, Date.valueOf("2025-05-06"), 15.0, 101),
-                new ActiviteSportive(2, "Natation", 60, Date.valueOf("2025-05-07"), 10.0, 102),
-                new ActiviteSportive(3, "Yoga", 45, Date.valueOf("2025-05-08"), 12.5, 103)
-        );
-        tableView.setItems(activiteList);
+        try {
+            // Récupérer les données actuelles depuis la base de données
+            activiteList = FXCollections.observableArrayList(activiteService.getAllActivites());
+            tableView.setItems(activiteList);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            showAlert(Alert.AlertType.ERROR, "Erreur", "Erreur de récupération des activités.");
+        }
     }
 
-    /**
-     * Supprime l'activité sélectionnée.
-     */
     @FXML
     private void supprimer() {
         ActiviteSportive selected = tableView.getSelectionModel().getSelectedItem();
         if (selected != null) {
-            activiteList.remove(selected);
-            tableView.refresh();
-            showAlert(Alert.AlertType.INFORMATION, "Supprimé", "Activité supprimée avec succès.");
-            // TODO: supprimer de la base de données si nécessaire
+            try {
+                // Supprimer de la base de données
+                activiteService.delete(selected);
+
+                // Supprimer de la liste observable et rafraîchir la table
+                activiteList.remove(selected);
+                tableView.refresh();
+
+                showAlert(Alert.AlertType.INFORMATION, "Supprimé", "Activité supprimée avec succès.");
+            } catch (SQLException e) {
+                e.printStackTrace();
+                showAlert(Alert.AlertType.ERROR, "Erreur", "Erreur de suppression de l'activité.");
+            }
         } else {
             showAlert(Alert.AlertType.WARNING, "Aucune sélection", "Veuillez sélectionner une activité à supprimer.");
         }
     }
 
-    /**
-     * Affiche une alerte.
-     */
     private void showAlert(Alert.AlertType type, String title, String content) {
         Alert alert = new Alert(type);
         alert.setTitle(title);
@@ -86,4 +104,32 @@ public class supprimeractController {
         alert.setContentText(content);
         alert.showAndWait();
     }
+
+    // Méthode pour revenir au menu
+    @FXML
+    private void goToMenu(ActionEvent event) {
+        try {
+            // Charger le fichier FXML du menu
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/menu.fxml"));
+            Parent root = loader.load();
+
+            // Créer une nouvelle scène
+            Scene scene = new Scene(root);
+
+            // Récupérer la fenêtre actuelle
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+            // Mettre à jour la scène de la fenêtre actuelle
+            stage.setScene(scene);
+            stage.show();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }
+
+
+
+
+
