@@ -171,4 +171,46 @@ public class UtilisateurService implements IService<Utilisateur> {
         }
         return utilisateurs;
     }
+    public Utilisateur findByEmail(String email) throws Exception {
+        String query = "SELECT * FROM utilisateur WHERE email = ?";
+
+        try (PreparedStatement stmt = conn.prepareStatement(query)) {
+            stmt.setString(1, email); // Email recherché
+            ResultSet resultSet = stmt.executeQuery();
+
+            if (resultSet.next()) {
+                Utilisateur user = new Utilisateur();
+                user.setId(resultSet.getInt("id_utilisateur"));
+                user.setEmail(resultSet.getString("email"));
+                user.setPassword(resultSet.getString("mot_de_passe"));
+                user.setRole(resultSet.getString("role"));
+                return user;
+            } else {
+                return null;
+            }
+        } catch (SQLException e) {
+            throw new Exception("Erreur lors de la récupération de l'utilisateur : " + e.getMessage(), e);
+        }
+    }
+
+
+    public void updatePassword(int userId, String newPassword) throws Exception {
+        String query = "UPDATE utilisateur SET mot_de_passe = ? WHERE id_utilisateur = ?";
+
+        try (PreparedStatement stmt = conn.prepareStatement(query)) {
+            stmt.setString(1, newPassword);
+            stmt.setInt(2, userId);
+
+            int affectedRows = stmt.executeUpdate();
+            if (affectedRows == 0) {
+                throw new Exception("Aucun utilisateur trouvé avec cet ID : " + userId);
+            }
+        } catch (SQLException e) {
+            throw new Exception("Erreur lors de la mise à jour du mot de passe : " + e.getMessage(), e);
+        }
+    }
+
 }
+
+
+

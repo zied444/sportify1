@@ -199,3 +199,8 @@ GridPane .password-field {
 .nav-button:hover {
     -fx-text-fill: #fb8c00;
 }
+.forgot-password-link {
+    -fx-text-fill: #1e90ff; /* Couleur du texte */
+    -fx-font-size: 12px;
+}
+

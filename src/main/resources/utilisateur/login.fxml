@@ -42,6 +42,7 @@
       <VBox spacing="15" alignment="CENTER" styleClass="card" prefWidth="300">
         <TextField fx:id="emailField" promptText="Email" styleClass="text-field" prefWidth="200"/>
         <PasswordField fx:id="passwordField" promptText="Mot de passe" styleClass="password-field" prefWidth="200"/>
+        <Hyperlink fx:id="forgotPasswordLink" text="Mot de passe oublié ?" styleClass="forgot-password-link" />
         <Button fx:id="loginButton" text="Se connecter" styleClass="primary-button" prefWidth="300"/>
         <Button fx:id="registerButton" text="S'inscrire" styleClass="primary-button" prefWidth="300"/>
       </VBox>
