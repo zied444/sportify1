@@ -20,7 +20,7 @@ public class Main extends Application {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/utilisateur/login.fxml"));
             Parent root = loader.load();
 
-           /*/ DisplayeventuserController DisplayeventuserController = loader.getController();
+            /*DisplayeventuserController DisplayeventuserController = loader.getController();
             DisplayeventuserController.setStage(primaryStage);*/
 
 
@@ -28,7 +28,7 @@ public class Main extends Application {
             loginController.setStage(primaryStage);
 
 
-            Scene scene = new Scene(root, 900, 700);
+            Scene scene = new Scene(root, 900, 800);
 
 
             primaryStage.setTitle("Sportify");
@@ -41,7 +41,7 @@ public class Main extends Application {
 
 
             primaryStage.setMinWidth(900);
-            primaryStage.setMinHeight(700);
+            primaryStage.setMinHeight(800);
 
             primaryStage.setScene(scene);
             

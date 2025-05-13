@@ -1,7 +1,7 @@
 package Services;
 
 import Models.Evenement;
-import utils.mydb;
+import utils.MyDB;
 import java.sql.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -11,7 +11,7 @@ public class EvenementService implements IServices<Evenement> {
     private Connection connection;
 
     public EvenementService() {
-        connection = mydb.getInstance().getConn();
+        connection =    MyDB.getInstance().getConnection();
     }
 
     @Override

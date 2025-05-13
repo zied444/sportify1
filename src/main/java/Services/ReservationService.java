@@ -2,7 +2,7 @@ package Services;
 
 import Models.Evenement;
 import Models.Reservation;
-import utils.mydb;
+import utils.MyDB;
 import java.sql.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -14,7 +14,7 @@ public class ReservationService implements IServices<Reservation> {
     private final EvenementService evenementService;
 
     public ReservationService() {
-        this.connection = mydb.getInstance().getConn();
+        this.connection = MyDB.getInstance().getConnection();
         this.evenementService = new EvenementService();
     }
 

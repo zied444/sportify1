@@ -1,25 +1,23 @@
 package main;
-import java.time.format.DateTimeFormatter;
-import java.sql.Date;
 
-import Models.Evenement;
-import Services.EvenementService;
-import utils.mydb;
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 
-public class Main {
+public class Main extends Application {
+    @Override
+    public void start(Stage primaryStage) throws Exception {
+        Parent root = FXMLLoader.load(getClass().getResource("/fxml/menu.fxml")); // Chargement de l'interface menu
+        primaryStage.setTitle("Menu Activités Sportives");
+        primaryStage.setScene(new Scene(root));
+        primaryStage.show();
+    }
+
     public static void main(String[] args) {
-        EvenementService sc = new EvenementService();
-        mydb.getInstance().getConn();
-
-        Evenement e1 = new Evenement("adrenaline", "tunis", new Date(System.currentTimeMillis()), "course", "une course 200m", 50);
-        int userId = 1; // Change cette valeur selon l'ID d'un utilisateur existant
-        e1.setUtilisateur_id(userId);
-        System.out.println("Tentative de création d'événement avec utilisateur_id = " + userId);
-
-        try {
-            sc.create(e1);
-        } catch (Exception e) {
-            System.out.println("Erreur : " + e.getMessage());
-        }
+        launch(args);
     }
 }
+
+

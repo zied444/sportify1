@@ -30,6 +30,10 @@ public class DisplayeventuserController {
     private final int utilisateurId = 1;
 
 
+
+    public void setStage(Stage stage) {
+        this.stage = stage;
+    }
     @FXML
     public void initialize() {
         refreshEventList();
