@@ -2,12 +2,6 @@ package controllers.utilisateur;
 
 import controllers.admin.AdminDashboardController;
 import entities.Utilisateur;
-import jakarta.mail.Authenticator;
-import jakarta.mail.Message;
-import jakarta.mail.MessagingException;
-import jakarta.mail.PasswordAuthentication;
-import jakarta.mail.Session;
-import jakarta.mail.Transport;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -24,11 +18,13 @@ import utils.PasswordHasher;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Properties;
-import jakarta.mail.*;
-import jakarta.mail.internet.InternetAddress;
-import jakarta.mail.internet.MimeMessage;
+
+
+
 
 import javax.mail.*;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 
 public class LoginController {
     @FXML
@@ -198,7 +194,7 @@ public class LoginController {
         properties.put("mail.smtp.auth", "true");
         properties.put("mail.smtp.starttls.enable", "true");
         properties.put("mail.smtp.host", "smtp.gmail.com");
-        properties.put("mail.smtp.port", "587");
+        properties.put("mail.smtp.port", "465");
 
         Session session = Session.getInstance(properties, new Authenticator() {
             @Override
