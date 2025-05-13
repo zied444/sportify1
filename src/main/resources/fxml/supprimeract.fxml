@@ -20,7 +20,7 @@
             prefWidth="879.0" prefHeight="554.0">
 
         <Label
-                text="Supprimer une activité"
+                text="Supprimer une activité"  style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: black;"
                 fx:id="titreLabel" />
 
         <TableView

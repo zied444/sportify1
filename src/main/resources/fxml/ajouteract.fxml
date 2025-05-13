@@ -18,7 +18,9 @@
     </ImageView>
 
     <VBox alignment="CENTER" spacing="15" layoutX="100" layoutY="80" prefWidth="400">
-        <Label text="Ajouter une activité" fx:id="titreLabel" />
+        <Label text="Ajouter une activité"  style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: black;"/>
+
+
 
         <TextField fx:id="sportField" promptText="Sport" />
         <TextField fx:id="dureeField" promptText="Durée (en minutes)" />
@@ -27,7 +29,7 @@
         <TextField fx:id="utilisateurIdField" promptText="ID Utilisateur" />
         <TextField fx:id="lieuTextField" promptText="Lieu" />
 
-        <Label fx:id="coordsLabel" text="Coordonnées : " />
+        <Label fx:id="coordsLabel" text="Coordonnées : " style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: black;" />
 
         <HBox spacing="10">
             <Button text="Ajouter" onAction="#ajouter" fx:id="ajouterButton" />
