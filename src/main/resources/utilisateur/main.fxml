@@ -22,11 +22,10 @@
             </ImageView>
             <HBox spacing="30" alignment="CENTER_RIGHT" HBox.hgrow="ALWAYS">
                 <Button text="Événements" styleClass="nav-button"/>
-                <Button text="Produits" styleClass="nav-button"/>
-                <Button text="Services" styleClass="nav-button"/>
-                <Button text="Entraînement" styleClass="nav-button"/>
+                <Button text="Boutique" styleClass="nav-button"/>
+                <Button text="Activite" styleClass="nav-button"/>
+                <Button text="Plan d'entrainement" styleClass="nav-button"/>
                 <Button text="Avis" styleClass="nav-button"/>
-                <Button text="À propos" styleClass="nav-button"/>
             </HBox>
         </HBox>
     </top>
